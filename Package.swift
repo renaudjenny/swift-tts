@@ -11,12 +11,19 @@ let package = Package(
     ],
     products: [
         .library(name: "SwiftTTS", targets: ["SwiftTTS"]),
+        .library(name: "SwiftTTSDependency", targets: ["SwiftTTSDependency"]),
         .library(name: "SwiftTTSCombine", targets: ["SwiftTTSCombine"]),
     ],
-    dependencies: [],
+    dependencies: [
+        .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "0.2.0"),
+    ],
     targets: [
         .target(name: "SwiftTTS", dependencies: []),
         .testTarget(name: "SwiftTTSTests", dependencies: ["SwiftTTS"]),
+        .target(name: "SwiftTTSDependency", dependencies: [
+            .product(name: "Dependencies", package: "swift-dependencies"),
+            "SwiftTTS",
+        ]),
         .target(name: "SwiftTTSCombine", dependencies: []),
     ]
 )

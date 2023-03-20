@@ -8,6 +8,24 @@ public struct SwiftTTS {
     public var speak: (String) -> Void
     public var isSpeaking: () -> AsyncStream<Bool>
     public var speakingProgress: () -> AsyncStream<Double>
+
+    public init(
+        rateRatio: @escaping () -> Float,
+        setRateRatio: @escaping (Float) -> Void,
+        voice: @escaping () -> AVSpeechSynthesisVoice?,
+        setVoice: @escaping (AVSpeechSynthesisVoice) -> Void,
+        speak: @escaping (String) -> Void,
+        isSpeaking: @escaping () -> AsyncStream<Bool>,
+        speakingProgress: @escaping () -> AsyncStream<Double>
+    ) {
+        self.rateRatio = rateRatio
+        self.setRateRatio = setRateRatio
+        self.voice = voice
+        self.setVoice = setVoice
+        self.speak = speak
+        self.isSpeaking = isSpeaking
+        self.speakingProgress = speakingProgress
+    }
 }
 
 private final class Engine: NSObject, AVSpeechSynthesizerDelegate {
