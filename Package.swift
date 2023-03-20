@@ -1,26 +1,22 @@
-// swift-tools-version:5.2
+// swift-tools-version:5.7
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
 let package = Package(
-    name: "SwiftTTSCombine",
+    name: "swift-tts",
     platforms: [
-        .iOS(.v13),
-        .macOS(.v10_15),
+        .iOS(.v15),
+        .macOS(.v13),
     ],
     products: [
-        .library(
-            name: "SwiftTTSCombine",
-            targets: ["SwiftTTSCombine"]),
+        .library(name: "SwiftTTS", targets: ["SwiftTTS"]),
+        .library(name: "SwiftTTSCombine", targets: ["SwiftTTSCombine"]),
     ],
     dependencies: [],
     targets: [
-        .target(
-            name: "SwiftTTSCombine",
-            dependencies: []),
-        .testTarget(
-            name: "SwiftTTSCombineTests",
-            dependencies: ["SwiftTTSCombine"]),
+        .target(name: "SwiftTTS", dependencies: []),
+        .testTarget(name: "SwiftTTSTests", dependencies: ["SwiftTTS"]),
+        .target(name: "SwiftTTSCombine", dependencies: []),
     ]
 )
