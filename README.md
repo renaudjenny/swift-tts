@@ -1,8 +1,20 @@
-# SwiftTTSCombine
+# SwiftTTS
 
-A very straightforward Combine wrapper around TTS part of AVFoundation/AVSpeechSynthesizer to allow you using Text to Speech with ease.
+This package contains some very straightforward wrappers around TTS part of AVFoundation/AVSpeechSynthesizer to allow you using Text to Speech with ease.
 
-## Usage
+* `SwiftTTS` Using **Swift Concurrency** with `async` `await`, a couple of `AsyncStream`
+* `SwiftTTSDependency` A wrapper around the library above facilitating the integration with [Point-Free Dependencies](https://github.com/pointfreeco/swift-dependencies) library or a project made with The Composable Architecture (TCA).
+* `SwiftTTSCombine` the OG library still available in this package
+
+## Modern concurrency usage
+
+🔨 TODO
+
+## [Point-Free Dependencies](https://github.com/pointfreeco/swift-dependencies) usage
+
+🔨 TODO
+
+## Combine Usage
 
 You can instantiate/inject `TTSEngine` object, it has this behavior
 
@@ -47,7 +59,7 @@ engine.speak(string: "Hello World! But slower")
 You can add SwiftTTSCombine to an Xcode project by adding it as a package dependency.
 
 1. From the **File** menu, select **Swift Packages › Add Package Dependency...**
-2. Enter "https://github.com/renaudjenny/SwiftTTSCombine" into the package repository URL test field
+2. Enter "https://github.com/renaudjenny/SwiftTTS" into the package repository URL test field
 
 ### As package dependency
 
@@ -57,13 +69,15 @@ Edit your `Package.swift` to add this library.
 let package = Package(
     ...
     dependencies: [
-        .package(url: "https://github.com/renaudjenny/SwiftTTSCombine", from: "1.0.0"),
+        .package(url: "https://github.com/renaudjenny/SwiftTTS", from: "2.0.0"),
         ...
     ],
     targets: [
         .target(
             name: "<Your project name>",
-            dependencies: ["SwiftTTSCombine"]),
+            dependencies: ["SwiftTTS"]), // <-- Modern concurrency
+            dependencies: ["SwiftTTSDependency"]), // <-- Point-Free Dependencies library wrapper
+            dependencies: ["SwiftTTSCombine"]), // <-- Combine wrapper
         ...
     ]
 )
