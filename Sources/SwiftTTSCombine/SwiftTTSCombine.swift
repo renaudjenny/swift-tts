@@ -2,7 +2,7 @@ import Foundation
 import Combine
 import AVFoundation
 
-public protocol TTSEngine: class {
+public protocol TTSEngine: AnyObject {
     var rateRatio: Float { get set }
     var voice: AVSpeechSynthesisVoice? { get set }
     func speak(string: String)
@@ -25,7 +25,9 @@ public final class Engine: NSObject, ObservableObject {
         self.voice = voice
         super.init()
         self.speechSynthesizer.delegate = self
+        #if os(iOS)
         try? AVAudioSession.sharedInstance().setCategory(.playback)
+        #endif
     }
 }
 
