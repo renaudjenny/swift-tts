@@ -85,15 +85,29 @@ private final class Engine: NSObject, AVSpeechSynthesizerDelegate {
 }
 
 public extension SwiftTTS {
-    static let live = {
+    static var live: Self {
         let engine = Engine(rateRatio: 1.0, voice: AVSpeechSynthesisVoice(language: "en-GB"))
 
         let isSpeaking = AsyncStream { continuation in
-            engine.isSpeaking = { continuation.yield($0) }
+            engine.isSpeaking = {
+                if $0 {
+                    continuation.yield(true)
+                } else {
+                    continuation.yield(false)
+                    continuation.finish()
+                }
+            }
         }
 
         let speakingProgress = AsyncStream { continuation in
-            engine.speakingProgress = { continuation.yield($0) }
+            engine.speakingProgress = {
+                if $0 < 1.0 {
+                    continuation.yield($0)
+                } else {
+                    continuation.yield(1)
+                    continuation.finish()
+                }
+            }
         }
 
         return Self(
@@ -105,5 +119,5 @@ public extension SwiftTTS {
             isSpeaking: { isSpeaking },
             speakingProgress: { speakingProgress }
        )
-    }()
+    }
 }

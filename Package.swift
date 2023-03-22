@@ -7,7 +7,7 @@ let package = Package(
     name: "swift-tts",
     platforms: [
         .iOS(.v15),
-        .macOS(.v13),
+        .macOS(.v12),
     ],
     products: [
         .library(name: "SwiftTTS", targets: ["SwiftTTS"]),

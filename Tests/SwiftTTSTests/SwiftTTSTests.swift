@@ -4,7 +4,7 @@ import XCTest
 
 @MainActor
 final class SwiftTTSTests: XCTestCase {
-    func testLiveTTSWithoutCrashing() {
+    func testLiveTTSWithoutCrashing() async {
         let tts = SwiftTTS.live
         tts.speak("Let's test that!")
     }
