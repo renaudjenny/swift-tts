@@ -8,11 +8,13 @@ This package contains some very straightforward wrappers around TTS part of AVFo
 
 ## Modern concurrency usage
 
-* `func speak(string: String)`: call this method when you simply want to use the TTS with a simple String
-  * subscribe to `isSpeakingPublisher` to know when the utterance starts to be heard, and when it's stopped
-  * subscribe to `speakingProgressPublisher` to know the progress, from 0 to 1
-* `var rateRatio: Float`: set the rate to slow down or accelerate the TTS engine
-* `var voice: AVSpeechSynthesisVoice?`: set the voice of the TTS engine, by default, it's the voice for `en-GB`
+* `speak(String) -> Void` - call this method when you simply want to use the TTS with a simple String
+  * `isSpeaking() -> AsyncStream<Bool>` - to know when the utterance starts to be heard, and when it's stopped
+  * `speakingProgress() -> AsyncStream<Double>` - to know the progress, from 0 to 1
+* `rateRatio() -> Float` - set the rate to slow down or accelerate the TTS engine
+* `setRateRatio(Float) -> Void` - set the rate to slow down or accelerate the TTS engine
+* `voice() -> AVSpeechSynthesisVoice?` - the voice of the TTS engine, by default, it's the voice for `en-GB`
+* `setVoice(AVSpeechSynthesisVoice) -> Void` - set the voice of the TTS engine
 
 ### Example
 
