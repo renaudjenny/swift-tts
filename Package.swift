@@ -5,10 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "swift-tts",
-    platforms: [
-        .iOS(.v15),
-        .macOS(.v12),
-    ],
+    platforms: [.iOS(.v15)],
     products: [
         .library(name: "SwiftTTS", targets: ["SwiftTTS"]),
         .library(name: "SwiftTTSDependency", targets: ["SwiftTTSDependency"]),
@@ -20,10 +17,13 @@ let package = Package(
     targets: [
         .target(name: "SwiftTTS", dependencies: []),
         .testTarget(name: "SwiftTTSTests", dependencies: ["SwiftTTS"]),
-        .target(name: "SwiftTTSDependency", dependencies: [
-            .product(name: "Dependencies", package: "swift-dependencies"),
-            "SwiftTTS",
-        ]),
+        .target(
+            name: "SwiftTTSDependency",
+            dependencies: [
+                .product(name: "Dependencies", package: "swift-dependencies"),
+                "SwiftTTS",
+            ]
+        ),
         .target(name: "SwiftTTSCombine", dependencies: []),
     ]
 )

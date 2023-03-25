@@ -94,7 +94,6 @@ public extension SwiftTTS {
                     continuation.yield(true)
                 } else {
                     continuation.yield(false)
-                    continuation.finish()
                 }
             }
         }
@@ -105,7 +104,6 @@ public extension SwiftTTS {
                     continuation.yield($0)
                 } else {
                     continuation.yield(1)
-                    continuation.finish()
                 }
             }
         }
