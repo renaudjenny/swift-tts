@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "swift-tts",
-    platforms: [.iOS(.v15)],
+    platforms: [.iOS(.v15), .macOS(.v13)],
     products: [
         .library(name: "SwiftTTS", targets: ["SwiftTTS"]),
         .library(name: "SwiftTTSDependency", targets: ["SwiftTTSDependency"]),

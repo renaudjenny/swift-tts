@@ -1,3 +1,7 @@
+#if os(macOS)
+#error("This library is not compatible with macOS")
+#endif
+
 import AVFoundation
 import Dependencies
 import SwiftTTS
