@@ -1,5 +1,9 @@
 # SwiftTTS
 
+[![Swift Test](https://github.com/renaudjenny/swift-tts/actions/workflows/test.yml/badge.svg)](https://github.com/renaudjenny/swift-tts/actions/workflows/test.yml)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Frenaudjenny%2Fswift-tts%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/renaudjenny/swift-tts)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Frenaudjenny%2Fswift-tts%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/renaudjenny/swift-tts)
+
 This package contains some very straightforward wrappers around TTS part of AVFoundation/AVSpeechSynthesizer to allow you using Text to Speech with ease.
 
 * `SwiftTTS` Using **Swift Concurrency** with `async` `await`, a couple of `AsyncStream`
